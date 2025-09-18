@@ -22,8 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
-// #define MASTER_RIGHT
+// define MASTER_LEFT
+#define MASTER_RIGHT
 // #define EE_HANDS
 
 // Custom encoder stuff https://web.archive.org/web/20191217030307/http://mysticmixles.com/lily58-pro-documentation/
@@ -61,3 +61,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define RGBLIGHT_EFFECT_BREATHING
 #define RGBLIGHT_EFFECT_RAINBOW_MOOD
 // #define RGBLIGHT_EFFECT_CHRISTMAS
+
+
+#define MIDI_BASIC
