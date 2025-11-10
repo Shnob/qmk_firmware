@@ -1,8 +1,12 @@
 #include QMK_KEYBOARD_H
 
+#include "sitelen_pona.h"
+
 enum layer_number {
     _QWERTY = 0,
     _DVORAK,
+    _SITPON,
+    _SITALT,
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -26,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 
-  [_QWERTY] = LAYOUT(
+[_QWERTY] = LAYOUT(
     KC_ESC,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,                    KC_INS,  KC_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_MINS,
    KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
@@ -49,13 +53,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 
- [_DVORAK] = LAYOUT(
+[_DVORAK] = LAYOUT(
     KC_ESC,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,                    KC_INS,  KC_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
     KC_TAB, KC_SCLN, KC_COMM,  KC_DOT,    KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L, KC_SLSH,
    KC_LSFT,    KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S, KC_MINS,
    KC_LCTL, KC_QUOT,    KC_Q,    KC_J,    KC_K,    KC_X, QK_LOCK, KC_MUTE,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z, KC_RSFT,
                             KC_LGUI, KC_LALT, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
+
+// sitelen pona
+
+[_SITPON] = LAYOUT(
+    KC_ESC,   SPK_1,   SPK_2,   SPK_3,   SPK_4,   SPK_5,                    KC_INS,  KC_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SPK_TAB,   SPK_Q,   SPK_W,   SPK_E,   SPK_R,   SPK_T,                     SPK_Y,   SPK_U,   SPK_I,   SPK_O,   SPK_P,SPK_MINS,
+   KC_LSFT,   SPK_A,   SPK_S,   SPK_D,   SPK_F,   SPK_G,                     SPK_H,   SPK_J,   SPK_K,   SPK_L,SPK_SCLN, KC_QUOT,
+   KC_LCTL,   SPK_Z,   SPK_X,   SPK_C,   SPK_V,   SPK_B, QK_LOCK, KC_MUTE,   SPK_N,   SPK_M, KC_COMM,  KC_DOT,SPK_SLSH, KC_RSFT,
+                            KC_LGUI,MO(_SITALT),MO(_LOWER),KC_SPC,KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
+),
+
+[_SITALT] = LAYOUT(
+    KC_ESC,   SPA_1,   SPA_2,   SPA_3,   SPA_4,   SPA_5,                    KC_INS,  KC_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SPA_TAB,   SPA_Q,   SPA_W,   SPA_E,   SPA_R,   SPA_T,                     SPA_Y,   SPA_U,   SPA_I,   SPA_O,   SPA_P,SPA_MINS,
+   KC_LSFT,   SPA_A,   SPA_S,   SPA_D,   SPA_F,   SPA_G,                     SPA_H,   SPA_J,   SPA_K,   SPA_L,SPA_SCLN, KC_QUOT,
+   KC_LCTL,   SPA_Z,   SPA_X,   SPA_C,   SPA_V,   SPA_B, QK_LOCK, KC_MUTE,   SPA_N,   SPA_M, KC_COMM,  KC_DOT,SPA_SLSH, KC_RSFT,
+                            KC_LGUI, _______, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
+),
+
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |   2  |   ,  |   .  |BackSP|      |                    | F19  | F20  | F21  | F22  | F23  | F24  |
@@ -101,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |QWERTY|DVORAK|      |      |      |      |                    |      |      |  P7  |  P8  |  P9  |  P/  |
+ * |QWERTY|DVORAK|SITPON|      |      |      |                    |      |      |  P7  |  P8  |  P9  |  P/  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |UGNEXT|UGHUED|UGHUEU|  MB4 |  MB5 |      |                    |      |      |  P4  |  P5  |  P6  |  P*  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -115,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_ADJUST] = LAYOUT(
 //        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,
-DF(_QWERTY),DF(_DVORAK),_______,_______,_______,_______,                   _______, _______, KC_KP_7, KC_KP_8, KC_KP_9, KC_PSLS,
+DF(_QWERTY),DF(_DVORAK),DF(_SITPON),_______,_______,_______,                   _______, _______, KC_KP_7, KC_KP_8, KC_KP_9, KC_PSLS,
    UG_NEXT, UG_HUED, UG_HUEU, KC_BTN4, KC_BTN5, _______,                   _______, _______, KC_KP_4, KC_KP_5, KC_KP_6, KC_PAST,
    UG_PREV, UG_SATD, UG_SATU, KC_BTN1, KC_BTN2, KC_BTN3,                   _______, _______, KC_KP_1, KC_KP_2, KC_KP_3, KC_PMNS,
    UG_TOGG, UG_VALD, UG_VALU, UG_SPDD, UG_SPDU, _______, _______, _______, _______, _______, KC_KP_0, KC_PDOT, KC_PENT, KC_PPLS,

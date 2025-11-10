@@ -15,6 +15,8 @@ MOUSEKEY_ENABLE = yes
 KEY_LOCK_ENABLE = yes
 # Enable if the file size is too large
 LTO_ENABLE = yes
+UNICODE_COMMON = yes
+UNICODEMAP_ENABLE = yes
 
 # If you want to change the display of OLED, you need to change here
 #SRC +=  ./lib/layer_state_reader_shnob.c \
