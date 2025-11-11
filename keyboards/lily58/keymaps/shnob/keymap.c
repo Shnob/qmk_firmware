@@ -7,6 +7,8 @@ enum layer_number {
     _DVORAK,
     _SITPON,
     _SITALT,
+    _SITSFT,
+    _SITSAL,
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -63,19 +65,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // sitelen pona
 
+// unmodded
+
 [_SITPON] = LAYOUT(
-    KC_ESC,   SPK_1,   SPK_2,   SPK_3,   SPK_4,   SPK_5,                    KC_INS,  KC_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
-   SPK_TAB,   SPK_Q,   SPK_W,   SPK_E,   SPK_R,   SPK_T,                     SPK_Y,   SPK_U,   SPK_I,   SPK_O,   SPK_P,SPK_MINS,
-   KC_LSFT,   SPK_A,   SPK_S,   SPK_D,   SPK_F,   SPK_G,                     SPK_H,   SPK_J,   SPK_K,   SPK_L,SPK_SCLN, KC_QUOT,
-   KC_LCTL,   SPK_Z,   SPK_X,   SPK_C,   SPK_V,   SPK_B, QK_LOCK, KC_MUTE,   SPK_N,   SPK_M, KC_COMM,  KC_DOT,SPK_SLSH, KC_RSFT,
+    KC_ESC,   SP0_1,   SP0_2,   SP0_3,   SP0_4,   SP0_5,                   SP0_INS, SP0_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SP0_TAB,   SP0_Q,   SP0_W,   SP0_E,   SP0_R,   SP0_T,                     SP0_Y,   SP0_U,   SP0_I,   SP0_O,   SP0_P,SP0_MINS,
+MO(_SITSFT),  SP0_A,   SP0_S,   SP0_D,   SP0_F,   SP0_G,                     SP0_H,   SP0_J,   SP0_K,   SP0_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP0_Z,   SP0_X,   SP0_C,   SP0_V,   SP0_B, QK_LOCK, KC_MUTE,   SP0_N,   SP0_M, KC_COMM,  KC_DOT, KC_SLSH,MO(_SITSFT),
                             KC_LGUI,MO(_SITALT),MO(_LOWER),KC_SPC,KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
 
+// shift
+
+[_SITSFT] = LAYOUT(
+    KC_ESC,   SP1_1,   SP1_2,   SP1_3,   SP1_4,   SP1_5,                   SP1_INS, SP1_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SP1_TAB,   SP1_Q,   SP1_W,   SP1_E,   SP1_R,   SP1_T,                     SP1_Y,   SP1_U,   SP1_I,   SP1_O,   SP1_P,SP1_MINS,
+   _______,   SP1_A,   SP1_S,   SP1_D,   SP1_F,   SP1_G,                     SP1_H,   SP1_J,   SP1_K,   SP1_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP1_Z,   SP1_X,   SP1_C,   SP1_V,   SP1_B, QK_LOCK, KC_MUTE,   SP1_N,   SP1_M, KC_COMM,  KC_DOT, KC_SLSH, _______,
+                            KC_LGUI,MO(_SITSAL),MO(_LOWER),KC_SPC,KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
+),
+
+// alt
+
 [_SITALT] = LAYOUT(
-    KC_ESC,   SPA_1,   SPA_2,   SPA_3,   SPA_4,   SPA_5,                    KC_INS,  KC_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
-   SPA_TAB,   SPA_Q,   SPA_W,   SPA_E,   SPA_R,   SPA_T,                     SPA_Y,   SPA_U,   SPA_I,   SPA_O,   SPA_P,SPA_MINS,
-   KC_LSFT,   SPA_A,   SPA_S,   SPA_D,   SPA_F,   SPA_G,                     SPA_H,   SPA_J,   SPA_K,   SPA_L,SPA_SCLN, KC_QUOT,
-   KC_LCTL,   SPA_Z,   SPA_X,   SPA_C,   SPA_V,   SPA_B, QK_LOCK, KC_MUTE,   SPA_N,   SPA_M, KC_COMM,  KC_DOT,SPA_SLSH, KC_RSFT,
+    KC_ESC,   SP2_1,   SP2_2,   SP2_3,   SP2_4,   SP2_5,                   SP2_INS, SP2_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SP2_TAB,   SP2_Q,   SP2_W,   SP2_E,   SP2_R,   SP2_T,                     SP2_Y,   SP2_U,   SP2_I,   SP2_O,   SP2_P,SP2_MINS,
+LM(_SITSAL,MOD_LSFT),SP2_A,SP2_S,SP2_D,  SP2_F,   SP2_G,                     SP2_H,   SP2_J,   SP2_K,   SP2_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP2_Z,   SP2_X,   SP2_C,   SP2_V,   SP2_B, QK_LOCK, KC_MUTE,   SP2_N,   SP2_M, KC_COMM,  KC_DOT, KC_SLSH,LM(_SITSAL,MOD_RSFT),
+                            KC_LGUI, _______, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
+),
+
+// shift+alt
+
+[_SITSAL] = LAYOUT(
+    KC_ESC,   SP3_1,   SP3_2,   SP3_3,   SP3_4,   SP3_5,                   SP3_INS, SP3_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SP3_TAB,   SP3_Q,   SP3_W,   SP3_E,   SP3_R,   SP3_T,                     SP3_Y,   SP3_U,   SP3_I,   SP3_O,   SP3_P,SP3_MINS,
+   _______,   SP3_A,   SP3_S,   SP3_D,   SP3_F,   SP3_G,                     SP3_H,   SP3_J,   SP3_K,   SP3_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP3_Z,   SP3_X,   SP3_C,   SP3_V,   SP3_B, QK_LOCK, KC_MUTE,   SP3_N,   SP3_M, KC_COMM,  KC_DOT, KC_SLSH, _______,
                             KC_LGUI, _______, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
 

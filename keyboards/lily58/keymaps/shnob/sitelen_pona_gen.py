@@ -153,7 +153,6 @@ keys_in_order = [
     's',
     'l',
     'a',
-    'scln',
     'g',
     'h',
     'e',
@@ -171,7 +170,6 @@ keys_in_order = [
     'm',
     'x',
     'z',
-    'slsh',
     'b',
     'n',
     '3',
@@ -180,6 +178,8 @@ keys_in_order = [
     'mins',
     '2',
     '5',
+    'del',
+    'ins',
     '1',
 ]
 
@@ -236,22 +236,9 @@ print_keys_nice()
 def print_keys_config():
     for key in keys:
         def format(key):
-            return f'{(f"SP_{key}").upper() if key else '_______'}'
+            return f'{(f"UM(SP_{key})").upper() if key else '_______'}'
 
-        if not keys[key][0]:
-            print(f'const uint16_t SPK_{key.upper()} = _______;')
-        else:
-            if not keys[key][1]:
-                print(f'const uint16_t SPK_{key.upper()} = {format(keys[key][0])};')
-            else:
-                print(f'const uint16_t SPK_{key.upper()} = UP({format(keys[key][0])}, {format(keys[key][1])});')
-
-        if not keys[key][2]:
-            print(f'const uint16_t SPA_{key.upper()} = _______;')
-        else:
-            if not keys[key][3]:
-                print(f'const uint16_t SPA_{key.upper()} = {format(keys[key][2])};')
-            else:
-                print(f'const uint16_t SPA_{key.upper()} = UP({format(keys[key][2])}, {format(keys[key][3])});')
+        for i in range(4):
+            print(f'const uint16_t SP{i}_{key.upper()} = {format(keys[key][i])};')
 
 print_keys_config()
