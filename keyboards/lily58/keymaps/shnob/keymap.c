@@ -70,8 +70,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SITPON] = LAYOUT(
     KC_ESC,   SP0_1,   SP0_2,   SP0_3,   SP0_4,   SP0_5,                   SP0_INS, SP0_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
    SP0_TAB,   SP0_Q,   SP0_W,   SP0_E,   SP0_R,   SP0_T,                     SP0_Y,   SP0_U,   SP0_I,   SP0_O,   SP0_P,SP0_MINS,
-MO(_SITSFT),  SP0_A,   SP0_S,   SP0_D,   SP0_F,   SP0_G,                     SP0_H,   SP0_J,   SP0_K,   SP0_L, KC_SCLN, KC_QUOT,
-   KC_LCTL,   SP0_Z,   SP0_X,   SP0_C,   SP0_V,   SP0_B, QK_LOCK, KC_MUTE,   SP0_N,   SP0_M, KC_COMM,  KC_DOT, KC_SLSH,MO(_SITSFT),
+LM(_SITSFT,MOD_LSFT),SP0_A,SP0_S,SP0_D,  SP0_F,   SP0_G,                     SP0_H,   SP0_J,   SP0_K,   SP0_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP0_Z,   SP0_X,   SP0_C,   SP0_V,   SP0_B, QK_LOCK, KC_MUTE,   SP0_N,   SP0_M, KC_COMM,  KC_DOT, KC_SLSH,LM(_SITSFT,MOD_RSFT),
                             KC_LGUI,MO(_SITALT),MO(_LOWER),KC_SPC,KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
 
