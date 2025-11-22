@@ -22,9 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
-// #define MASTER_RIGHT
-// #define EE_HANDS
+#define SPLIT_HAND_MATRIX_GRID B5, F6
 
 // Custom encoder stuff https://web.archive.org/web/20191217030307/http://mysticmixles.com/lily58-pro-documentation/
 #define ENCODERS_PAD_A {F4}
@@ -36,6 +34,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define QUICK_TAP_TERM 0
 #define TAPPING_TERM 100
+
+#define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
 
 #undef RGBLED_NUM
 #undef RGBLIGHT_LED_COUNT

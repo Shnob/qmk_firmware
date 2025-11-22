@@ -1,8 +1,14 @@
 #include QMK_KEYBOARD_H
 
+#include "sitelen_pona.h"
+
 enum layer_number {
     _QWERTY = 0,
     _DVORAK,
+    _SITPON,
+    _SITALT,
+    _SITSFT,
+    _SITSAL,
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -26,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 
-  [_QWERTY] = LAYOUT(
+[_QWERTY] = LAYOUT(
     KC_ESC,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,                    KC_INS,  KC_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_MINS,
    KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
@@ -49,13 +55,56 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 
- [_DVORAK] = LAYOUT(
+[_DVORAK] = LAYOUT(
     KC_ESC,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,                    KC_INS,  KC_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
     KC_TAB, KC_SCLN, KC_COMM,  KC_DOT,    KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L, KC_SLSH,
    KC_LSFT,    KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S, KC_MINS,
    KC_LCTL, KC_QUOT,    KC_Q,    KC_J,    KC_K,    KC_X, QK_LOCK, KC_MUTE,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z, KC_RSFT,
                             KC_LGUI, KC_LALT, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
+
+// sitelen pona
+
+// unmodded
+
+[_SITPON] = LAYOUT(
+    KC_ESC,   SP0_1,   SP0_2,   SP0_3,   SP0_4,   SP0_5,                   SP0_INS, SP0_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SP0_TAB,   SP0_Q,   SP0_W,   SP0_E,   SP0_R,   SP0_T,                     SP0_Y,   SP0_U,   SP0_I,   SP0_O,   SP0_P,SP0_MINS,
+LM(_SITSFT,MOD_LSFT),SP0_A,SP0_S,SP0_D,  SP0_F,   SP0_G,                     SP0_H,   SP0_J,   SP0_K,   SP0_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP0_Z,   SP0_X,   SP0_C,   SP0_V,   SP0_B, QK_LOCK, KC_MUTE,   SP0_N,   SP0_M, KC_COMM,  KC_DOT, KC_SLSH,LM(_SITSFT,MOD_RSFT),
+                            KC_LGUI,MO(_SITALT),MO(_LOWER),KC_SPC,KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
+),
+
+// shift
+
+[_SITSFT] = LAYOUT(
+    KC_ESC,   SP1_1,   SP1_2,   SP1_3,   SP1_4,   SP1_5,                   SP1_INS, SP1_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SP1_TAB,   SP1_Q,   SP1_W,   SP1_E,   SP1_R,   SP1_T,                     SP1_Y,   SP1_U,   SP1_I,   SP1_O,   SP1_P,SP1_MINS,
+   _______,   SP1_A,   SP1_S,   SP1_D,   SP1_F,   SP1_G,                     SP1_H,   SP1_J,   SP1_K,   SP1_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP1_Z,   SP1_X,   SP1_C,   SP1_V,   SP1_B, QK_LOCK, KC_MUTE,   SP1_N,   SP1_M, KC_COMM,  KC_DOT, KC_SLSH, _______,
+                            KC_LGUI,MO(_SITSAL),MO(_LOWER),KC_SPC,KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
+),
+
+// alt
+
+[_SITALT] = LAYOUT(
+    KC_ESC,   SP2_1,   SP2_2,   SP2_3,   SP2_4,   SP2_5,                   SP2_INS, SP2_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SP2_TAB,   SP2_Q,   SP2_W,   SP2_E,   SP2_R,   SP2_T,                     SP2_Y,   SP2_U,   SP2_I,   SP2_O,   SP2_P,SP2_MINS,
+LM(_SITSAL,MOD_LSFT),SP2_A,SP2_S,SP2_D,  SP2_F,   SP2_G,                     SP2_H,   SP2_J,   SP2_K,   SP2_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP2_Z,   SP2_X,   SP2_C,   SP2_V,   SP2_B, QK_LOCK, KC_MUTE,   SP2_N,   SP2_M, KC_COMM,  KC_DOT, KC_SLSH,LM(_SITSAL,MOD_RSFT),
+                            KC_LGUI, _______, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
+),
+
+// shift+alt
+
+[_SITSAL] = LAYOUT(
+    KC_ESC,   SP3_1,   SP3_2,   SP3_3,   SP3_4,   SP3_5,                   SP3_INS, SP3_DEL, KC_HOME,  KC_END, KC_PGUP, KC_PGDN,
+   SP3_TAB,   SP3_Q,   SP3_W,   SP3_E,   SP3_R,   SP3_T,                     SP3_Y,   SP3_U,   SP3_I,   SP3_O,   SP3_P,SP3_MINS,
+   _______,   SP3_A,   SP3_S,   SP3_D,   SP3_F,   SP3_G,                     SP3_H,   SP3_J,   SP3_K,   SP3_L, KC_SCLN, KC_QUOT,
+   KC_LCTL,   SP3_Z,   SP3_X,   SP3_C,   SP3_V,   SP3_B, QK_LOCK, KC_MUTE,   SP3_N,   SP3_M, KC_COMM,  KC_DOT, KC_SLSH, _______,
+                            KC_LGUI, _______, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
+),
+
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |   2  |   ,  |   .  |BackSP|      |                    | F19  | F20  | F21  | F22  | F23  | F24  |
@@ -101,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |QWERTY|DVORAK|      |      |      |      |                    |      |      |  P7  |  P8  |  P9  |  P/  |
+ * |QWERTY|DVORAK|SITPON|      |      |      |                    |      |      |  P7  |  P8  |  P9  |  P/  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |UGNEXT|UGHUED|UGHUEU|  MB4 |  MB5 |      |                    |      |      |  P4  |  P5  |  P6  |  P*  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -115,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [_ADJUST] = LAYOUT(
 //        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,        ,
-DF(_QWERTY),DF(_DVORAK),_______,_______,_______,_______,                   _______, _______, KC_KP_7, KC_KP_8, KC_KP_9, KC_PSLS,
+DF(_QWERTY),DF(_DVORAK),DF(_SITPON),_______,_______,_______,                   _______, _______, KC_KP_7, KC_KP_8, KC_KP_9, KC_PSLS,
    UG_NEXT, UG_HUED, UG_HUEU, KC_BTN4, KC_BTN5, _______,                   _______, _______, KC_KP_4, KC_KP_5, KC_KP_6, KC_PAST,
    UG_PREV, UG_SATD, UG_SATU, KC_BTN1, KC_BTN2, KC_BTN3,                   _______, _______, KC_KP_1, KC_KP_2, KC_KP_3, KC_PMNS,
    UG_TOGG, UG_VALD, UG_VALU, UG_SPDD, UG_SPDU, _______, _______, _______, _______, _______, KC_KP_0, KC_PDOT, KC_PENT, KC_PPLS,
